@@ -1,0 +1,2203 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Portfolio de Aaron Ben Jabria, Étudiant en Informatique 2e année. Découvrez mes projets et compétences.">
+    <title>Aaron Ben Jabria - Étudiant en Informatique</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        /* === 1. VARIABLES MODERNES === */
+        :root {
+            --bg-primary: #0a0e27;
+            --bg-secondary: #151932;
+            --bg-card: #1a1f3a;
+            --accent-primary: #6366f1;
+            --accent-secondary: #8b5cf6;
+            --accent-tertiary: #06b6d4;
+            --text-primary: #f8fafc;
+            --text-secondary: #94a3b8;
+            --text-muted: #64748b;
+            --border-color: rgba(148, 163, 184, 0.1);
+            --sidebar-width: 280px;
+            --success: #10b981;
+            --warning: #f59e0b;
+        }
+
+        /* === 2. RESET & BASE === */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            will-change: auto;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            overflow-x: hidden;
+        }
+
+        body {
+            font-family: 'Inter', 'Segoe UI', -apple-system, sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        /* === 3. SIDEBAR OPTIMISÉE === */
+        .sidebar {
+            position: fixed;
+            left: 0;
+            top: 0;
+            width: var(--sidebar-width);
+            height: 100vh;
+            background: var(--bg-secondary);
+            border-right: 1px solid var(--border-color);
+            padding: 2rem 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            z-index: 1000;
+            overflow-y: auto;
+        }
+
+        .profile-section {
+            text-align: center;
+            margin-bottom: 2rem;
+            padding: 0 1.5rem;
+        }
+
+        .profile-avatar {
+            width: 100px;
+            height: 100px;
+            background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1rem;
+            font-size: 2.5rem;
+            box-shadow: 0 8px 24px rgba(99, 102, 241, 0.3);
+        }
+
+        .profile-name {
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            color: var(--text-primary);
+        }
+
+        .profile-title {
+            font-size: 0.875rem;
+            color: var(--text-secondary);
+            margin-bottom: 1rem;
+        }
+
+        .availability-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.5rem 1rem;
+            background: rgba(16, 185, 129, 0.1);
+            border: 1px solid rgba(16, 185, 129, 0.3);
+            border-radius: 50px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: var(--success);
+            margin-top: 0.5rem;
+        }
+
+        .pulse-dot {
+            width: 8px;
+            height: 8px;
+            background: var(--success);
+            border-radius: 50%;
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.5; transform: scale(1.1); }
+        }
+
+        .social-links {
+            display: flex;
+            gap: 0.75rem;
+            margin-bottom: 2rem;
+        }
+
+        .social-link {
+            width: 36px;
+            height: 36px;
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-secondary);
+            text-decoration: none;
+            transition: all 0.2s ease;
+        }
+
+        .social-link:hover {
+            background: var(--accent-primary);
+            border-color: var(--accent-primary);
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        .nav-menu {
+            width: 100%;
+            padding: 0 1rem;
+        }
+
+        .nav-link {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 0.75rem 1rem;
+            color: var(--text-secondary);
+            text-decoration: none;
+            border-radius: 8px;
+            margin-bottom: 0.25rem;
+            font-size: 0.9375rem;
+            font-weight: 500;
+            transition: all 0.2s ease;
+            position: relative;
+            will-change: transform;
+        }
+
+        .nav-link:hover,
+        .nav-link.active {
+            color: var(--text-primary);
+            background: var(--bg-card);
+        }
+
+        .nav-link.active::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 3px;
+            height: 60%;
+            background: var(--accent-primary);
+            border-radius: 0 3px 3px 0;
+        }
+
+        .nav-icon {
+            width: 20px;
+            text-align: center;
+            font-size: 1.125rem;
+        }
+
+        .sidebar-footer {
+            margin-top: auto;
+            padding: 1.5rem;
+            text-align: center;
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            border-top: 1px solid var(--border-color);
+            width: 100%;
+        }
+
+        /* === 4. MAIN CONTENT === */
+        .main-wrapper {
+            margin-left: var(--sidebar-width);
+            min-height: 100vh;
+        }
+
+        section {
+            padding: 4rem 6%;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        /* === 5. HERO SECTION === */
+        #hero {
+            position: relative;
+            text-align: center;
+            background: linear-gradient(135deg, var(--bg-primary) 0%, var(--bg-secondary) 100%);
+        }
+
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .hero-tag {
+            display: inline-block;
+            padding: 0.5rem 1rem;
+            background: rgba(99, 102, 241, 0.1);
+            border: 1px solid rgba(99, 102, 241, 0.3);
+            border-radius: 50px;
+            color: var(--accent-primary);
+            font-size: 0.875rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero-title {
+            font-size: clamp(2.5rem, 6vw, 4rem);
+            font-weight: 800;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-subtitle {
+            font-size: clamp(1.25rem, 3vw, 1.75rem);
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+            font-weight: 500;
+        }
+
+        .hero-description {
+            font-size: 1.125rem;
+            color: var(--text-secondary);
+            margin-bottom: 2.5rem;
+            line-height: 1.8;
+        }
+
+        .cta-group {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 0.875rem 2rem;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 0.9375rem;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: all 0.2s ease;
+            border: none;
+            cursor: pointer;
+            will-change: transform;
+        }
+
+        .btn-primary {
+            background: var(--accent-primary);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: var(--accent-secondary);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(99, 102, 241, 0.3);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--text-primary);
+            border: 1px solid var(--border-color);
+        }
+
+        .btn-secondary:hover {
+            background: var(--bg-card);
+            border-color: var(--accent-primary);
+        }
+
+        /* === 6. SECTION HEADER === */
+        .section-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .section-tag {
+            display: inline-block;
+            padding: 0.5rem 1rem;
+            background: rgba(139, 92, 246, 0.1);
+            border: 1px solid rgba(139, 92, 246, 0.3);
+            border-radius: 50px;
+            color: var(--accent-secondary);
+            font-size: 0.875rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .section-title {
+            font-size: clamp(2rem, 4vw, 3rem);
+            font-weight: 800;
+            margin-bottom: 1rem;
+            color: var(--text-primary);
+        }
+
+        .section-description {
+            font-size: 1.125rem;
+            color: var(--text-secondary);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* === 7. ABOUT SECTION === */
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .about-image-wrapper {
+            width: 100%;
+            aspect-ratio: 1;
+            background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+            border-radius: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 6rem;
+            box-shadow: 0 20px 60px rgba(99, 102, 241, 0.2);
+        }
+
+        .about-content h3 {
+            font-size: 1.75rem;
+            margin-bottom: 1.5rem;
+            color: var(--text-primary);
+        }
+
+        .about-content p {
+            color: var(--text-secondary);
+            margin-bottom: 1.25rem;
+            font-size: 1rem;
+            line-height: 1.7;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .stat-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 1.5rem;
+            text-align: center;
+            transition: all 0.2s ease;
+        }
+
+        .stat-card:hover {
+            border-color: var(--accent-primary);
+            transform: translateY(-4px);
+        }
+
+        .stat-value {
+            font-size: 2rem;
+            font-weight: 800;
+            color: var(--accent-primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            font-size: 0.875rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        /* === 8. SKILLS SECTION === */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+        }
+
+        .skill-category {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            padding: 2rem;
+            transition: all 0.2s ease;
+            will-change: transform;
+        }
+
+        .skill-category:hover {
+            border-color: var(--accent-primary);
+            transform: translateY(-4px);
+        }
+
+        .skill-category-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .skill-icon {
+            width: 48px;
+            height: 48px;
+            background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+        }
+
+        .skill-category h3 {
+            font-size: 1.25rem;
+            color: var(--text-primary);
+        }
+
+        .skill-item {
+            margin-bottom: 0.75rem;
+            padding: 0.75rem 1rem;
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 8px;
+            border: 1px solid transparent;
+            transition: border-color 0.2s ease;
+        }
+        
+        .skill-item:hover {
+            border-color: var(--accent-primary);
+        }
+
+        .skill-item .skill-name {
+            display: block;
+            color: var(--text-primary);
+            font-weight: 500;
+        }
+
+        .skill-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .skill-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .skill-name {
+            font-weight: 600;
+            color: var(--text-primary);
+            font-size: 0.9375rem;
+        }
+
+        /* === 9. TIMELINE (PARCOURS) === */
+        .timeline {
+            position: relative;
+            padding: 2rem 0;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: var(--border-color);
+            transform: translateX(-50%);
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 3rem;
+        }
+
+        .timeline-item:nth-child(odd) .timeline-content {
+            margin-left: calc(50% + 2rem);
+        }
+
+        .timeline-item:nth-child(even) .timeline-content {
+            margin-right: calc(50% + 2rem);
+            text-align: right;
+        }
+
+        .timeline-dot {
+            position: absolute;
+            left: 50%;
+            top: 1.5rem;
+            width: 16px;
+            height: 16px;
+            background: var(--accent-primary);
+            border: 4px solid var(--bg-primary);
+            border-radius: 50%;
+            transform: translateX(-50%);
+            z-index: 2;
+        }
+
+        .timeline-content {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            padding: 1.5rem;
+            transition: all 0.2s ease;
+        }
+
+        .timeline-content:hover {
+            border-color: var(--accent-primary);
+            transform: translateY(-4px);
+        }
+
+        .timeline-date {
+            font-size: 0.875rem;
+            font-weight: 700;
+            color: var(--accent-primary);
+            margin-bottom: 0.5rem;
+            text-transform: uppercase;
+        }
+
+        .timeline-title {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .timeline-company {
+            color: var(--accent-secondary);
+            font-weight: 600;
+            margin-bottom: 0.75rem;
+        }
+
+        .timeline-description {
+            color: var(--text-secondary);
+            line-height: 1.6;
+            font-size: 0.9375rem;
+        }
+
+        /* === 10. PROJECTS GRID === */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+            gap: 2rem;
+        }
+
+        .project-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            overflow: hidden;
+            transition: all 0.2s ease;
+            cursor: pointer;
+            will-change: transform;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .project-card:hover {
+            border-color: var(--accent-primary);
+            transform: translateY(-8px);
+            box-shadow: 0 12px 32px rgba(99, 102, 241, 0.2);
+        }
+
+        .project-image {
+            height: 200px;
+            background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3.5rem;
+            flex-shrink: 0;
+        }
+
+        .project-body {
+            padding: 1.5rem;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+        }
+
+        .project-title {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 0.75rem;
+        }
+
+        .project-description {
+            color: var(--text-secondary);
+            font-size: 0.9375rem;
+            line-height: 1.6;
+            margin-bottom: 1rem;
+        }
+
+        .project-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .tag {
+            padding: 0.25rem 0.75rem;
+            background: rgba(99, 102, 241, 0.1);
+            border: 1px solid rgba(99, 102, 241, 0.2);
+            border-radius: 50px;
+            font-size: 0.8125rem;
+            color: var(--accent-primary);
+            font-weight: 600;
+        }
+
+        /* NOUVEAUX BOUTONS PROJETS */
+        .project-actions {
+            display: flex;
+            gap: 1rem;
+            margin-top: auto;
+            padding-top: 1rem;
+        }
+
+        .btn-project {
+            padding: 0.6rem 1rem;
+            border-radius: 6px;
+            font-size: 0.875rem;
+            font-weight: 600;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: all 0.2s ease;
+            flex: 1;
+            justify-content: center;
+        }
+
+        .btn-demo {
+            background: rgba(99, 102, 241, 0.15);
+            color: var(--accent-primary);
+            border: 1px solid rgba(99, 102, 241, 0.2);
+        }
+
+        .btn-demo:hover {
+            background: var(--accent-primary);
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        .btn-github {
+            background: transparent;
+            color: var(--text-secondary);
+            border: 1px solid var(--border-color);
+        }
+
+        .btn-github:hover {
+            border-color: var(--text-primary);
+            color: var(--text-primary);
+            background: rgba(255, 255, 255, 0.05);
+            transform: translateY(-2px);
+        }
+
+        /* === 11. MODAL AMÉLIORÉ === */
+        .modal {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(8px);
+            z-index: 9999;
+            padding: 2rem;
+            overflow-y: auto;
+        }
+
+        .modal.active {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal-dialog {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            border-radius: 24px;
+            max-width: 800px;
+            width: 100%;
+            max-height: 90vh;
+            overflow-y: auto;
+            position: relative;
+        }
+
+        .modal-header {
+            padding: 2rem;
+            border-bottom: 1px solid var(--border-color);
+            position: relative;
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 2rem;
+            right: 2rem;
+            width: 36px;
+            height: 36px;
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            color: var(--text-secondary);
+            font-size: 1.25rem;
+        }
+
+        .modal-close:hover {
+            background: var(--accent-primary);
+            border-color: var(--accent-primary);
+            color: white;
+        }
+
+        .modal-title {
+            font-size: 2rem;
+            font-weight: 800;
+            color: var(--text-primary);
+            margin-bottom: 1rem;
+            padding-right: 3rem;
+        }
+
+        .modal-body {
+            padding: 2rem;
+        }
+
+        .modal-section {
+            margin-bottom: 2rem;
+        }
+
+        .modal-section:last-child {
+            margin-bottom: 0;
+        }
+
+        .modal-section h4 {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .modal-section p {
+            color: var(--text-secondary);
+            line-height: 1.7;
+            margin-bottom: 1rem;
+        }
+
+        .modal-section ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .modal-section li {
+            color: var(--text-secondary);
+            padding-left: 1.5rem;
+            margin-bottom: 0.75rem;
+            position: relative;
+            line-height: 1.6;
+        }
+
+        .modal-section li::before {
+            content: '→';
+            position: absolute;
+            left: 0;
+            color: var(--accent-primary);
+            font-weight: 700;
+        }
+
+        /* === 12. VEILLES GRID === */
+        .veilles-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .veille-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            padding: 1.5rem;
+            transition: all 0.2s ease;
+            will-change: transform;
+        }
+
+        .veille-card:hover {
+            border-color: var(--accent-secondary);
+            transform: translateY(-4px);
+        }
+
+        .veille-icon {
+            width: 56px;
+            height: 56px;
+            background: linear-gradient(135deg, var(--accent-secondary), var(--accent-tertiary));
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.75rem;
+            margin-bottom: 1rem;
+        }
+
+        .veille-card h3 {
+            font-size: 1.25rem;
+            color: var(--text-primary);
+            margin-bottom: 0.75rem;
+        }
+
+        .veille-card p {
+            color: var(--text-secondary);
+            line-height: 1.6;
+            margin-bottom: 1rem;
+            font-size: 0.9375rem;
+        }
+
+        .veille-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--accent-secondary);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9375rem;
+            transition: gap 0.2s ease;
+        }
+
+        .veille-link:hover {
+            gap: 0.75rem;
+        }
+
+        /* === 13. CONTACT SECTION === */
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .contact-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            padding: 2rem;
+            text-align: center;
+            transition: all 0.2s ease;
+            will-change: transform;
+        }
+
+        .contact-card:hover {
+            border-color: var(--accent-primary);
+            transform: translateY(-4px);
+        }
+
+        .contact-icon {
+            width: 64px;
+            height: 64px;
+            background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            margin: 0 auto 1rem;
+        }
+
+        .contact-card h3 {
+            font-size: 1.125rem;
+            color: var(--text-primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .contact-card a {
+            color: var(--accent-tertiary);
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.2s ease;
+        }
+
+        .contact-card a:hover {
+            color: var(--accent-primary);
+        }
+
+        .contact-form {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            padding: 2rem;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .form-group {
+            margin-bottom: 1.25rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: var(--text-primary);
+            font-weight: 600;
+            font-size: 0.9375rem;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.875rem 1rem;
+            background: rgba(148, 163, 184, 0.05);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            color: var(--text-primary);
+            font-family: inherit;
+            font-size: 0.9375rem;
+            transition: all 0.2s ease;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--accent-primary);
+            background: rgba(99, 102, 241, 0.05);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .form-submit {
+            width: 100%;
+            padding: 1rem;
+            background: var(--accent-primary);
+            border: none;
+            border-radius: 8px;
+            color: white;
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+        }
+
+        .form-submit:hover {
+            background: var(--accent-secondary);
+            transform: translateY(-2px);
+        }
+
+        /* === 14. E4 GRID === */
+        .e4-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .e4-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            padding: 2rem;
+            text-align: center;
+            transition: all 0.2s ease;
+            will-change: transform;
+        }
+
+        .e4-card:hover {
+            border-color: var(--warning);
+            transform: translateY(-4px);
+        }
+
+        .e4-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .e4-card h3 {
+            font-size: 1.25rem;
+            color: var(--text-primary);
+            margin-bottom: 0.75rem;
+        }
+
+        .e4-card p {
+            color: var(--text-secondary);
+            line-height: 1.6;
+            margin-bottom: 1.25rem;
+            font-size: 0.9375rem;
+        }
+
+        .download-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.75rem 1.5rem;
+            background: linear-gradient(135deg, var(--warning), var(--accent-tertiary));
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 0.9375rem;
+            transition: all 0.2s ease;
+        }
+
+        .download-btn:hover {
+            transform: scale(1.05);
+        }
+
+        /* === 15. ALTERNANCE HIGHLIGHT === */
+        .alternance-banner {
+            background: linear-gradient(135deg, rgba(16, 185, 129, 0.1), rgba(6, 182, 212, 0.1));
+            border: 2px solid rgba(16, 185, 129, 0.3);
+            border-radius: 16px;
+            padding: 2rem;
+            margin: 3rem auto;
+            max-width: 800px;
+            text-align: center;
+        }
+
+        .alternance-banner h3 {
+            font-size: 1.75rem;
+            color: var(--success);
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.75rem;
+        }
+
+        .alternance-banner p {
+            color: var(--text-secondary);
+            line-height: 1.7;
+            margin-bottom: 1.5rem;
+            font-size: 1.0625rem;
+        }
+
+        .alternance-details {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+            margin-bottom: 1.5rem;
+        }
+
+        .alternance-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--text-primary);
+            font-weight: 600;
+        }
+
+        .alternance-item i {
+            color: var(--success);
+            font-size: 1.125rem;
+        }
+
+        /* === 16. RESPONSIVE === */
+        @media (max-width: 1200px) {
+            .sidebar {
+                width: 260px;
+            }
+            .main-wrapper {
+                margin-left: 260px;
+            }
+        }
+
+        @media (max-width: 1024px) {
+            .about-grid {
+                grid-template-columns: 1fr;
+            }
+            .skills-grid {
+                grid-template-columns: 1fr;
+            }
+            .timeline::before {
+                left: 20px;
+            }
+            .timeline-item:nth-child(odd) .timeline-content,
+            .timeline-item:nth-child(even) .timeline-content {
+                margin-left: 60px;
+                margin-right: 0;
+                text-align: left;
+            }
+            .timeline-dot {
+                left: 20px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .sidebar {
+                width: 100%;
+                height: auto;
+                position: relative;
+                padding: 1.5rem 0;
+                border-right: none;
+                border-bottom: 1px solid var(--border-color);
+            }
+            .main-wrapper {
+                margin-left: 0;
+            }
+            .nav-menu {
+                display: flex;
+                overflow-x: auto;
+                padding: 0 1rem;
+                gap: 0.5rem;
+            }
+            .nav-link {
+                flex-shrink: 0;
+                white-space: nowrap;
+            }
+            section {
+                padding: 3rem 5%;
+                min-height: auto;
+            }
+            .hero-title {
+                font-size: 2rem;
+            }
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+            .modal {
+                padding: 1rem;
+            }
+            .modal-dialog {
+                border-radius: 16px;
+            }
+            .modal-header,
+            .modal-body {
+                padding: 1.5rem;
+            }
+        }
+
+        /* === 17. ANIMATIONS OPTIMISÉES === */
+        @media (prefers-reduced-motion: no-preference) {
+            .fade-in {
+                opacity: 0;
+                animation: fadeIn 0.5s ease forwards;
+            }
+            @keyframes fadeIn {
+                to { opacity: 1; }
+            }
+        }
+
+        /* === 18. SCROLLBAR === */
+        ::-webkit-scrollbar {
+            width: 10px;
+            height: 10px;
+        }
+        ::-webkit-scrollbar-track {
+            background: var(--bg-primary);
+        }
+        ::-webkit-scrollbar-thumb {
+            background: var(--accent-primary);
+            border-radius: 5px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--accent-secondary);
+        }
+    </style>
+</head>
+<body>
+    <aside class="sidebar">
+        <div class="profile-section">
+            <div class="profile-avatar">
+                <i class="fa-solid fa-code"></i>
+            </div>
+            <div class="profile-name">Aaron Ben Jabria</div>
+            <div class="profile-title">Développeur Full Stack</div>
+            <div class="availability-badge">
+                <span class="pulse-dot"></span>
+                Recherche Alternance
+            </div>
+        </div>
+
+        <div class="social-links">
+            <a href="#" class="social-link" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+            <a href="#" class="social-link" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
+            <a href="#" class="social-link" aria-label="Twitter"><i class="fa-brands fa-twitter"></i></a>
+            <a href="#" class="social-link" aria-label="Email"><i class="fa-solid fa-envelope"></i></a>
+        </div>
+
+        <nav class="nav-menu">
+            <a href="#hero" class="nav-link active">
+                <i class="fa-solid fa-house nav-icon"></i>
+                <span>Accueil</span>
+            </a>
+            <a href="#apropos" class="nav-link">
+                <i class="fa-regular fa-user nav-icon"></i>
+                <span>À Propos</span>
+            </a>
+            <a href="#competences" class="nav-link">
+                <i class="fa-solid fa-code nav-icon"></i>
+                <span>Compétences</span>
+            </a>
+            <a href="#parcours" class="nav-link">
+                <i class="fa-regular fa-file-lines nav-icon"></i>
+                <span>Parcours</span>
+            </a>
+            <a href="#projets" class="nav-link">
+                <i class="fa-solid fa-folder-open nav-icon"></i>
+                <span>Projets</span>
+            </a>
+            <a href="#veilles" class="nav-link">
+                <i class="fa-solid fa-rss nav-icon"></i>
+                <span>Veilles</span>
+            </a>
+            <a href="#contact" class="nav-link">
+                <i class="fa-regular fa-envelope nav-icon"></i>
+                <span>Contact</span>
+            </a>
+            <a href="#e4" class="nav-link">
+                <i class="fa-solid fa-graduation-cap nav-icon"></i>
+                <span>Épreuve E4</span>
+            </a>
+        </nav>
+
+        <div class="sidebar-footer">
+            © <span id="year"></span> Aaron Ben Jabria
+        </div>
+    </aside>
+
+    <div class="main-wrapper">
+        <section id="hero">
+            <div class="hero-content fade-in">
+                <span class="hero-tag">👋 Bienvenue sur mon portfolio</span>
+                <h1 class="hero-title">Aaron Ben Jabria</h1>
+                <p class="hero-subtitle">Étudiant en Informatique 2e année</p>
+                <p class="hero-description">
+                    Étudiant passionné par le développement informatique, j'envisage de poursuivre en MIAGE pour approfondir mes compétences techniques.
+                </p>
+                <div class="cta-group">
+                    <a href="#projets" class="btn btn-primary">
+                        <i class="fa-solid fa-rocket"></i>
+                        Voir mes projets
+                    </a>
+                    <a href="#contact" class="btn btn-secondary">
+                        <i class="fa-regular fa-paper-plane"></i>
+                        Me contacter
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <div class="alternance-banner fade-in" style="margin-top: -6rem;">
+            <h3>
+                <i class="fa-solid fa-briefcase"></i>
+                Recherche Alternance 2026
+            </h3>
+            <p>
+                Je recherche activement une alternance pour mon Bac+3 informatique à Nice et alentours.
+                Disponible dès septembre 2026, rythme 3 jours entreprise / 2 jours école.
+            </p>
+            <div class="alternance-details">
+                <div class="alternance-item">
+                    <i class="fa-solid fa-calendar"></i>
+                    <span>Septembre 2026</span>
+                </div>
+                <div class="alternance-item">
+                    <i class="fa-solid fa-clock"></i>
+                    <span>24 mois</span>
+                </div>
+                <div class="alternance-item">
+                    <i class="fa-solid fa-location-dot"></i>
+                    <span>Nice et alentours</span>
+                </div>
+            </div>
+            <a href="#contact" class="btn btn-primary">
+                <i class="fa-solid fa-handshake"></i>
+                Me contacter
+            </a>
+        </div>
+
+        <section id="apropos">
+            <div class="section-header fade-in">
+                <span class="section-tag">👋 Présentation</span>
+                <h2 class="section-title">À Propos de Moi</h2>
+                <p class="section-description">
+                    Développeur passionné avec une vision créative et technique
+                </p>
+            </div>
+
+            <div class="about-grid">
+                <div class="about-image-wrapper fade-in">
+                    <i class="fa-solid fa-laptop-code"></i>
+                </div>
+                <div class="about-content fade-in">
+                    <h3>Bonjour ! Je suis Aaron 👨‍💻</h3>
+                    <p>
+                        Étudiant en BTS SIO option SLAM, je suis passionné par le développement web et la création
+                        d'interfaces modernes. Mon objectif est de créer des solutions digitales qui allient
+                        performance, esthétique et expérience utilisateur optimale.
+                    </p>
+                    <p>
+                        Autodidacte curieux, je me forme continuellement aux dernières technologies pour rester à
+                        la pointe de l'innovation. J'aime transformer des concepts complexes en applications
+                        intuitives et accessibles.
+                    </p>
+                    <p>
+                        Au-delà du code, je m'intéresse au design UI/UX, à l'optimisation des performances et aux
+                        bonnes pratiques de développement.
+                    </p>
+
+                    <div class="stats-grid">
+                        <div class="stat-card">
+                            <div class="stat-value">15+</div>
+                            <div class="stat-label">Projets</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-value">3</div>
+                            <div class="stat-label">Années Exp.</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-value">100%</div>
+                            <div class="stat-label">Passion</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="competences">
+            <div class="section-header fade-in">
+                <span class="section-tag">💪 Expertise</span>
+                <h2 class="section-title">Compétences Techniques</h2>
+                <p class="section-description">
+                    Maîtrise complète des technologies web modernes
+                </p>
+            </div>
+
+            <div class="skills-grid">
+                <div class="skill-category fade-in">
+                    <div class="skill-category-header">
+                        <div class="skill-icon">
+                            <i class="fa-solid fa-code"></i>
+                        </div>
+                        <h3>Frontend</h3>
+                    </div>
+                    <div class="skill-item">
+                        <span class="skill-name">React / Next.js</span>
+                    </div>
+                    <div class="skill-item">
+                        <span class="skill-name">TypeScript</span>
+                    </div>
+                    <div class="skill-item">
+                        <span class="skill-name">HTML / CSS / SCSS</span>
+                    </div>
+                    <div class="skill-item">
+                        <span class="skill-name">Tailwind CSS</span>
+                    </div>
+                </div>
+
+                <div class="skill-category fade-in">
+                    <div class="skill-category-header">
+                        <div class="skill-icon">
+                            <i class="fa-solid fa-server"></i>
+                        </div>
+                        <h3>Backend</h3>
+                    </div>
+                    <div class="skill-item">
+                        <span class="skill-name">Node.js / Express</span>
+                    </div>
+                    <div class="skill-item">
+                        <span class="skill-name">PHP / Laravel</span>
+                    </div>
+                    <div class="skill-item">
+                        <span class="skill-name">MySQL / PostgreSQL</span>
+                    </div>
+                    <div class="skill-item">
+                        <span class="skill-name">REST API</span>
+                    </div>
+                </div>
+
+                <div class="skill-category fade-in">
+                    <div class="skill-category-header">
+                        <div class="skill-icon">
+                            <i class="fa-solid fa-paintbrush"></i>
+                        </div>
+                        <h3>Design & UX</h3>
+                    </div>
+                    <div class="skill-item">
+                        <span class="skill-name">Figma / Adobe XD</span>
+                    </div>
+                    <div class="skill-item">
+                        <span class="skill-name">UI/UX Design</span>
+                    </div>
+                    <div class="skill-item">
+                        <span class="skill-name">Responsive Design</span>
+                    </div>
+                    <div class="skill-item">
+                        <span class="skill-name">Animations</span>
+                    </div>
+                </div>
+
+                <div class="skill-category fade-in">
+                    <div class="skill-category-header">
+                        <div class="skill-icon">
+                            <i class="fa-solid fa-tools"></i>
+                        </div>
+                        <h3>Outils & DevOps</h3>
+                    </div>
+                    <div class="skill-item">
+                        <span class="skill-name">Git / GitHub</span>
+                    </div>
+                    <div class="skill-item">
+                        <span class="skill-name">Docker</span>
+                    </div>
+                    <div class="skill-item">
+                        <span class="skill-name">VS Code</span>
+                    </div>
+                    <div class="skill-item">
+                        <span class="skill-name">CI/CD</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="parcours">
+            <div class="section-header fade-in">
+                <span class="section-tag">🎓 Formation</span>
+                <h2 class="section-title">Mon Parcours</h2>
+                <p class="section-description">
+                    Cheminement académique et professionnel
+                </p>
+            </div>
+
+            <div class="timeline">
+                <div class="timeline-item fade-in">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-date">2024 - 2026</div>
+                        <h3 class="timeline-title">BTS SIO Option SLAM</h3>
+                        <div class="timeline-company">Lycée Honoré d'Estienne d'Orves - Nice</div>
+                        <p class="timeline-description">
+                            Formation en développement d'applications avec spécialisation en Solutions Logicielles.
+                            Apprentissage des méthodologies agiles, conception de bases de données et développement full stack.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="timeline-item fade-in">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-date">Janvier - Février 2026</div>
+                        <h3 class="timeline-title">Stage Développeur</h3>
+                        <div class="timeline-company">Pubify</div>
+                        <p class="timeline-description">
+                           Sur les plateformes Capornumismatique et Cap Or Pro, j'ai conçu un connecteur API financier (Yoda Forex) optimisé par un système de cache anti-surcharge. En parallèle, j'ai sécurisé l'infrastructure contre les bots via un double WAF (Cloudflare, Wordfence) et garanti la conformité légale (RGPD, Livre de police) en migrant les documents sensibles sur AWS S3.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="timeline-item fade-in">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-date">Mai - Juin 2025</div>
+                        <h3 class="timeline-title">Stage Développeur</h3>
+                        <div class="timeline-company">Pubify</div>
+                        <p class="timeline-description">
+                            J'ai conçu des workflows d'automatisation complexes (n8n, Apify) intégrant l'IA (HeyGen API) pour générer des campagnes de prospection multicanales personnalisées. En parallèle, j'ai développé un mini SaaS métier en architecturant une base de données PostgreSQL sécurisée (Supabase Auth) pour la gestion multi-agences, couplée à des interfaces responsives sous Framer.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="timeline-item fade-in">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-date">2021 - 2024</div>
+                        <h3 class="timeline-title">Baccalauréat Mathématique</h3>
+                        <div class="timeline-company">Option Informatique</div>
+                        <p class="timeline-description">
+                            Sciences et Technologies de l'Industrie avec spécialité Systèmes d'Information et Numérique.
+                            
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="projets">
+            <div class="section-header fade-in">
+                <span class="section-tag">🚀 Réalisations</span>
+                <h2 class="section-title">Mes Projets</h2>
+                <p class="section-description">
+                    Une sélection de mes créations les plus abouties
+                </p>
+            </div>
+
+            <div class="projects-grid">
+                <div class="project-card fade-in" onclick="openModal('modal1')">
+                    <div class="project-image">
+                        <i class="fa-solid fa-shopping-cart"></i>
+                    </div>
+                    <div class="project-body">
+                        <h3 class="project-title">TechStore - E-Commerce</h3>
+                        <p class="project-description">
+                            Plateforme e-commerce complète avec système de paiement sécurisé et gestion des stocks.
+                        </p>
+                        <div class="project-tags">
+                            <span class="tag">React</span>
+                            <span class="tag">Node.js</span>
+                            <span class="tag">MongoDB</span>
+                        </div>
+                        <div class="project-actions">
+                            <a href="#" class="btn-project btn-github" onclick="event.stopPropagation()">
+                                <i class="fa-brands fa-github"></i> Code
+                            </a>
+                            <a href="#" class="btn-project btn-demo" onclick="event.stopPropagation()">
+                                <i class="fa-solid fa-external-link-alt"></i> Demo
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card fade-in" onclick="openModal('modal2')">
+                    <div class="project-image">
+                        <i class="fa-solid fa-tasks"></i>
+                    </div>
+                    <div class="project-body">
+                        <h3 class="project-title">TaskMaster Pro</h3>
+                        <p class="project-description">
+                            Application de gestion de tâches collaborative avec notifications en temps réel.
+                        </p>
+                        <div class="project-tags">
+                            <span class="tag">Next.js</span>
+                            <span class="tag">TypeScript</span>
+                            <span class="tag">PostgreSQL</span>
+                        </div>
+                        <div class="project-actions">
+                            <a href="#" class="btn-project btn-github" onclick="event.stopPropagation()">
+                                <i class="fa-brands fa-github"></i> Code
+                            </a>
+                            <a href="#" class="btn-project btn-demo" onclick="event.stopPropagation()">
+                                <i class="fa-solid fa-external-link-alt"></i> Demo
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card fade-in" onclick="openModal('modal3')">
+                    <div class="project-image">
+                        <i class="fa-solid fa-heartbeat"></i>
+                    </div>
+                    <div class="project-body">
+                        <h3 class="project-title">HealthTracker</h3>
+                        <p class="project-description">
+                            Application de suivi de santé avec tracking d'activité physique et nutrition.
+                        </p>
+                        <div class="project-tags">
+                            <span class="tag">React Native</span>
+                            <span class="tag">Firebase</span>
+                            <span class="tag">Chart.js</span>
+                        </div>
+                        <div class="project-actions">
+                            <a href="#" class="btn-project btn-github" onclick="event.stopPropagation()">
+                                <i class="fa-brands fa-github"></i> Code
+                            </a>
+                            <a href="#" class="btn-project btn-demo" onclick="event.stopPropagation()">
+                                <i class="fa-solid fa-external-link-alt"></i> Demo
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card fade-in" onclick="openModal('modal4')">
+                    <div class="project-image">
+                        <i class="fa-solid fa-film"></i>
+                    </div>
+                    <div class="project-body">
+                        <h3 class="project-title">StreamFlix</h3>
+                        <p class="project-description">
+                            Plateforme de streaming vidéo avec catalogue et système de recommandation.
+                        </p>
+                        <div class="project-tags">
+                            <span class="tag">React</span>
+                            <span class="tag">Express</span>
+                            <span class="tag">AWS S3</span>
+                        </div>
+                        <div class="project-actions">
+                            <a href="#" class="btn-project btn-github" onclick="event.stopPropagation()">
+                                <i class="fa-brands fa-github"></i> Code
+                            </a>
+                            <a href="#" class="btn-project btn-demo" onclick="event.stopPropagation()">
+                                <i class="fa-solid fa-external-link-alt"></i> Demo
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card fade-in" onclick="openModal('modal5')">
+                    <div class="project-image">
+                        <i class="fa-solid fa-comments"></i>
+                    </div>
+                    <div class="project-body">
+                        <h3 class="project-title">ChatConnect</h3>
+                        <p class="project-description">
+                            Messagerie instantanée avec chat en temps réel et appels vidéo.
+                        </p>
+                        <div class="project-tags">
+                            <span class="tag">Vue.js</span>
+                            <span class="tag">Socket.io</span>
+                            <span class="tag">WebRTC</span>
+                        </div>
+                        <div class="project-actions">
+                            <a href="#" class="btn-project btn-github" onclick="event.stopPropagation()">
+                                <i class="fa-brands fa-github"></i> Code
+                            </a>
+                            <a href="#" class="btn-project btn-demo" onclick="event.stopPropagation()">
+                                <i class="fa-solid fa-external-link-alt"></i> Demo
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card fade-in" onclick="openModal('modal6')">
+                    <div class="project-image">
+                        <i class="fa-solid fa-chart-line"></i>
+                    </div>
+                    <div class="project-body">
+                        <h3 class="project-title">Analytics Dashboard</h3>
+                        <p class="project-description">
+                            Dashboard analytique temps réel avec graphiques interactifs.
+                        </p>
+                        <div class="project-tags">
+                            <span class="tag">Next.js</span>
+                            <span class="tag">D3.js</span>
+                            <span class="tag">GraphQL</span>
+                        </div>
+                        <div class="project-actions">
+                            <a href="#" class="btn-project btn-github" onclick="event.stopPropagation()">
+                                <i class="fa-brands fa-github"></i> Code
+                            </a>
+                            <a href="#" class="btn-project btn-demo" onclick="event.stopPropagation()">
+                                <i class="fa-solid fa-external-link-alt"></i> Demo
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="veilles">
+            <div class="section-header fade-in">
+                <span class="section-tag">🔍 Recherche</span>
+                <h2 class="section-title">Veilles Technologiques</h2>
+                <p class="section-description">
+                    Veille constante sur les innovations tech
+                </p>
+            </div>
+
+            <div class="veilles-grid">
+                <div class="veille-card fade-in">
+                    <div class="veille-icon">
+                        <i class="fa-brands fa-react"></i>
+                    </div>
+                    <h3>React & Ecosystem</h3>
+                    <p>
+                        Veille active sur React 19, Server Components, Next.js 15 et l'évolution de l'écosystème React.
+                    </p>
+                    <a href="#" class="veille-link">
+                        Voir mes notes <i class="fa-solid fa-arrow-right"></i>
+                    </a>
+                </div>
+
+                <div class="veille-card fade-in">
+                    <div class="veille-icon">
+                        <i class="fa-solid fa-robot"></i>
+                    </div>
+                    <h3>Intelligence Artificielle</h3>
+                    <p>
+                        Exploration des IA génératives et leur intégration dans le développement web.
+                    </p>
+                    <a href="#" class="veille-link">
+                        Voir mes notes <i class="fa-solid fa-arrow-right"></i>
+                    </a>
+                </div>
+
+                <div class="veille-card fade-in">
+                    <div class="veille-icon">
+                        <i class="fa-solid fa-mobile-screen-button"></i>
+                    </div>
+                    <h3>Progressive Web Apps</h3>
+                    <p>
+                        Suivi des évolutions PWA, Web APIs modernes et stratégies offline-first.
+                    </p>
+                    <a href="#" class="veille-link">
+                        Voir mes notes <i class="fa-solid fa-arrow-right"></i>
+                    </a>
+                </div>
+
+                <div class="veille-card fade-in">
+                    <div class="veille-icon">
+                        <i class="fa-solid fa-shield-halved"></i>
+                    </div>
+                    <h3>Cybersécurité Web</h3>
+                    <p>
+                        Veille sur les vulnérabilités OWASP et meilleures pratiques de sécurisation.
+                    </p>
+                    <a href="#" class="veille-link">
+                        Voir mes notes <i class="fa-solid fa-arrow-right"></i>
+                    </a>
+                </div>
+
+                <div class="veille-card fade-in">
+                    <div class="veille-icon">
+                        <i class="fa-solid fa-gauge-high"></i>
+                    </div>
+                    <h3>Performance Web</h3>
+                    <p>
+                        Optimisation Core Web Vitals, lazy loading et techniques de mise en cache.
+                    </p>
+                    <a href="#" class="veille-link">
+                        Voir mes notes <i class="fa-solid fa-arrow-right"></i>
+                    </a>
+                </div>
+
+                <div class="veille-card fade-in">
+                    <div class="veille-icon">
+                        <i class="fa-solid fa-cloud"></i>
+                    </div>
+                    <h3>Cloud & DevOps</h3>
+                    <p>
+                        Évolutions cloud (AWS, Vercel), CI/CD modernes et orchestration.
+                    </p>
+                    <a href="#" class="veille-link">
+                        Voir mes notes <i class="fa-solid fa-arrow-right"></i>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact">
+            <div class="section-header fade-in">
+                <span class="section-tag">📬 Contact</span>
+                <h2 class="section-title">Travaillons Ensemble</h2>
+                <p class="section-description">
+                    Me contacter
+                </p>
+            </div>
+
+            <div class="contact-grid">
+                <div class="contact-card fade-in">
+                    <div class="contact-icon">
+                        <i class="fa-solid fa-envelope"></i>
+                    </div>
+                    <h3>Email</h3>
+                    <a href="mailto:Aaron.benjabria@gmail.com">Aaron.benjabria@gmail.com</a>
+                </div>
+
+                <div class="contact-card fade-in">
+                    <div class="contact-icon">
+                        <i class="fa-solid fa-phone"></i>
+                    </div>
+                    <h3>Téléphone</h3>
+                    <a href="tel:+33613760596">06 13 76 05 96</a>
+                </div>
+
+                <div class="contact-card fade-in">
+                    <div class="contact-icon">
+                        <i class="fa-solid fa-location-dot"></i>
+                    </div>
+                    <h3>Localisation</h3>
+                    <span style="color: var(--text-primary); font-weight: 600;">Nice, France</span>
+                </div>
+            </div>
+
+            <div class="contact-form fade-in">
+                <form onsubmit="return handleSubmit(event)">
+                    <div class="form-group">
+                        <label for="name">Nom complet</label>
+                        <input type="text" id="name" required placeholder="Votre nom">
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" required placeholder="votre@email.com">
+                    </div>
+                    <div class="form-group">
+                        <label for="subject">Sujet</label>
+                        <input type="text" id="subject" required placeholder="Sujet de votre message">
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Message</label>
+                        <textarea id="message" required placeholder="Votre message..."></textarea>
+                    </div>
+                    <button type="submit" class="form-submit">
+                        <i class="fa-solid fa-paper-plane"></i>
+                        Envoyer le message
+                    </button>
+                </form>
+            </div>
+        </section>
+
+        <section id="e4">
+            <div class="section-header fade-in">
+                <span class="section-tag">📁 Documentation</span>
+                <h2 class="section-title">Épreuve E4 - BTS SIO</h2>
+                <p class="section-description">
+                    Réalisations professionnelles et documentation
+                </p>
+            </div>
+
+            <div class="e4-grid">
+                <div class="e4-card fade-in">
+                    <div class="e4-icon">📊</div>
+                    <h3>Tableau de Synthèse</h3>
+                    <p>
+                        Récapitulatif complet de mes réalisations professionnelles avec contextes et solutions.
+                    </p>
+                    <a href="#" class="download-btn">
+                        <i class="fa-solid fa-download"></i>
+                        Télécharger PDF
+                    </a>
+                </div>
+
+                <div class="e4-card fade-in">
+                    <div class="e4-icon">📝</div>
+                    <h3>Fiches Descriptives</h3>
+                    <p>
+                        Documentation détaillée de 2 réalisations professionnelles avec analyses techniques.
+                    </p>
+                    <a href="#" class="download-btn">
+                        <i class="fa-solid fa-download"></i>
+                        Télécharger PDF
+                    </a>
+                </div>
+
+                <div class="e4-card fade-in">
+                    <div class="e4-icon">💻</div>
+                    <h3>Productions Techniques</h3>
+                    <p>
+                        Code source, maquettes et documentation des projets présentés.
+                    </p>
+                    <a href="#" class="download-btn">
+                        <i class="fa-solid fa-download"></i>
+                        Accéder GitHub
+                    </a>
+                </div>
+
+                <div class="e4-card fade-in">
+                    <div class="e4-icon">📈</div>
+                    <h3>Veille Technologique</h3>
+                    <p>
+                        Synthèse de ma veille avec analyses d'articles et tests de technologies.
+                    </p>
+                    <a href="#" class="download-btn">
+                        <i class="fa-solid fa-download"></i>
+                        Voir la veille
+                    </a>
+                </div>
+
+                <div class="e4-card fade-in">
+                    <div class="e4-icon">🎯</div>
+                    <h3>Compétences Acquises</h3>
+                    <p>
+                        Cartographie des compétences développées durant la formation.
+                    </p>
+                    <a href="#" class="download-btn">
+                        <i class="fa-solid fa-download"></i>
+                        Télécharger PDF
+                    </a>
+                </div>
+
+                <div class="e4-card fade-in">
+                    <div class="e4-icon">🏆</div>
+                    <h3>Certifications</h3>
+                    <p>
+                        Certificats et attestations de formations complémentaires.
+                    </p>
+                    <a href="#" class="download-btn">
+                        <i class="fa-solid fa-download"></i>
+                        Voir certificats
+                    </a>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <div id="modal1" class="modal">
+        <div class="modal-dialog">
+            <div class="modal-header">
+                <span class="modal-close" onclick="closeModal('modal1')">&times;</span>
+                <h2 class="modal-title">TechStore - E-Commerce</h2>
+                <div class="project-tags">
+                    <span class="tag">React</span>
+                    <span class="tag">Node.js</span>
+                    <span class="tag">MongoDB</span>
+                    <span class="tag">Stripe</span>
+                </div>
+            </div>
+            <div class="modal-body">
+                <div class="modal-section">
+                    <h4>📋 Description</h4>
+                    <p>
+                        Plateforme e-commerce moderne et performante dédiée à la vente de produits high-tech. Inclut un frontend React dynamique, un backend Node.js robuste et MongoDB pour la gestion des données.
+                    </p>
+                </div>
+                <div class="modal-section">
+                    <h4>✨ Fonctionnalités</h4>
+                    <ul>
+                        <li>Catalogue produits avec filtres avancés et recherche intelligente</li>
+                        <li>Panier d'achat dynamique avec calcul automatique</li>
+                        <li>Système de paiement sécurisé via Stripe API</li>
+                        <li>Dashboard administrateur pour gestion stocks et commandes</li>
+                        <li>Authentification JWT avec gestion des rôles</li>
+                        <li>Système d'avis et notations produits</li>
+                        <li>Interface responsive mobile-first</li>
+                    </ul>
+                </div>
+                <div class="modal-section">
+                    <h4>🛠️ Technologies</h4>
+                    <ul>
+                        <li><strong>Frontend:</strong> React 18, Redux Toolkit, React Router, Axios</li>
+                        <li><strong>Backend:</strong> Node.js, Express, JWT, Bcrypt</li>
+                        <li><strong>Base de données:</strong> MongoDB, Mongoose ODM</li>
+                        <li><strong>Paiement:</strong> Stripe API integration</li>
+                        <li><strong>Styling:</strong> SCSS, CSS Modules</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="modal2" class="modal">
+        <div class="modal-dialog">
+            <div class="modal-header">
+                <span class="modal-close" onclick="closeModal('modal2')">&times;</span>
+                <h2 class="modal-title">TaskMaster Pro</h2>
+                <div class="project-tags">
+                    <span class="tag">Next.js</span>
+                    <span class="tag">TypeScript</span>
+                    <span class="tag">PostgreSQL</span>
+                </div>
+            </div>
+            <div class="modal-body">
+                <div class="modal-section">
+                    <h4>📋 Description</h4>
+                    <p>
+                        Application de gestion de projets collaborative permettant aux équipes de travailler efficacement. Utilise Next.js pour un rendu optimal et TypeScript pour la fiabilité.
+                    </p>
+                </div>
+                <div class="modal-section">
+                    <h4>✨ Fonctionnalités</h4>
+                    <ul>
+                        <li>Tableaux Kanban avec drag & drop fluide</li>
+                        <li>Notifications temps réel via WebSockets</li>
+                        <li>Système de collaboration avec commentaires</li>
+                        <li>Intégration calendrier et rappels automatiques</li>
+                        <li>Statistiques et rapports d'avancement</li>
+                        <li>Mode hors-ligne avec synchronisation</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="modal3" class="modal">
+        <div class="modal-dialog">
+            <div class="modal-header">
+                <span class="modal-close" onclick="closeModal('modal3')">&times;</span>
+                <h2 class="modal-title">HealthTracker</h2>
+                <div class="project-tags">
+                    <span class="tag">React Native</span>
+                    <span class="tag">Firebase</span>
+                    <span class="tag">Chart.js</span>
+                </div>
+            </div>
+            <div class="modal-body">
+                <div class="modal-section">
+                    <h4>📋 Description</h4>
+                    <p>
+                        Application mobile de suivi de santé permettant de monitorer l'activité physique, nutrition et sommeil avec visualisations détaillées.
+                    </p>
+                </div>
+                <div class="modal-section">
+                    <h4>✨ Fonctionnalités</h4>
+                    <ul>
+                        <li>Tracking activité physique (pas, distance, calories)</li>
+                        <li>Journal alimentaire avec calcul nutritionnel</li>
+                        <li>Suivi du sommeil et analyse des cycles</li>
+                        <li>Graphiques et statistiques détaillées</li>
+                        <li>Intégration Apple Health et Google Fit</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="modal4" class="modal">
+        <div class="modal-dialog">
+            <div class="modal-header">
+                <span class="modal-close" onclick="closeModal('modal4')">&times;</span>
+                <h2 class="modal-title">StreamFlix</h2>
+                <div class="project-tags">
+                    <span class="tag">React</span>
+                    <span class="tag">Express</span>
+                    <span class="tag">AWS S3</span>
+                </div>
+            </div>
+            <div class="modal-body">
+                <div class="modal-section">
+                    <h4>📋 Description</h4>
+                    <p>
+                        Plateforme de streaming vidéo inspirée de Netflix avec système de recommandation personnalisé et lecteur vidéo avancé.
+                    </p>
+                </div>
+                <div class="modal-section">
+                    <h4>✨ Fonctionnalités</h4>
+                    <ul>
+                        <li>Catalogue films/séries avec recherche avancée</li>
+                        <li>Lecteur vidéo HTML5 personnalisé</li>
+                        <li>Recommandations basées sur l'historique</li>
+                        <li>Profils utilisateurs multiples</li>
+                        <li>Streaming adaptatif selon la bande passante</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="modal5" class="modal">
+        <div class="modal-dialog">
+            <div class="modal-header">
+                <span class="modal-close" onclick="closeModal('modal5')">&times;</span>
+                <h2 class="modal-title">ChatConnect</h2>
+                <div class="project-tags">
+                    <span class="tag">Vue.js</span>
+                    <span class="tag">Socket.io</span>
+                    <span class="tag">WebRTC</span>
+                </div>
+            </div>
+            <div class="modal-body">
+                <div class="modal-section">
+                    <h4>📋 Description</h4>
+                    <p>
+                        Application de messagerie instantanée avec chat temps réel, appels audio/vidéo et partage de fichiers.
+                    </p>
+                </div>
+                <div class="modal-section">
+                    <h4>✨ Fonctionnalités</h4>
+                    <ul>
+                        <li>Messagerie instantanée temps réel</li>
+                        <li>Appels audio et vidéo via WebRTC</li>
+                        <li>Partage de fichiers multimédias</li>
+                        <li>Groupes de discussion</li>
+                        <li>Messages éphémères et chiffrement</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="modal6" class="modal">
+        <div class="modal-dialog">
+            <div class="modal-header">
+                <span class="modal-close" onclick="closeModal('modal6')">&times;</span>
+                <h2 class="modal-title">Analytics Dashboard</h2>
+                <div class="project-tags">
+                    <span class="tag">Next.js</span>
+                    <span class="tag">D3.js</span>
+                    <span class="tag">GraphQL</span>
+                </div>
+            </div>
+            <div class="modal-body">
+                <div class="modal-section">
+                    <h4>📋 Description</h4>
+                    <p>
+                        Dashboard analytique professionnel pour visualisation de données business en temps réel avec graphiques interactifs.
+                    </p>
+                </div>
+                <div class="modal-section">
+                    <h4>✨ Fonctionnalités</h4>
+                    <ul>
+                        <li>Visualisation données temps réel</li>
+                        <li>Graphiques interactifs multiples</li>
+                        <li>Tableaux avec tri et filtrage</li>
+                        <li>Rapports personnalisés avec exports PDF/Excel</li>
+                        <li>Système d'alertes sur seuils</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Mettre à jour l'année automatiquement
+        document.getElementById('year').textContent = new Date().getFullYear();
+
+        // Navigation active
+        const navLinks = document.querySelectorAll('.nav-link');
+        const sections = document.querySelectorAll('section');
+
+        window.addEventListener('scroll', () => {
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                if (scrollY >= sectionTop - 200) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href').includes(current)) {
+                    link.classList.add('active');
+                }
+            });
+        });
+
+        // Smooth scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+
+        // Modal functions
+        function openModal(id) {
+            document.getElementById(id).classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeModal(id) {
+            document.getElementById(id).classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+
+        window.addEventListener('click', (e) => {
+            if (e.target.classList.contains('modal')) {
+                e.target.classList.remove('active');
+                document.body.style.overflow = 'auto';
+            }
+        });
+
+        // Form submit
+        function handleSubmit(e) {
+            e.preventDefault();
+            alert('Merci pour votre message ! Je vous répondrai rapidement. 🚀');
+            e.target.reset();
+            return false;
+        }
+
+        console.log('%c🚀 Portfolio optimisé chargé!', 'color: #6366f1; font-size: 18px; font-weight: bold;');
+    </script>
+
+
+</body>
+</html>
