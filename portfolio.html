@@ -660,6 +660,8 @@
             gap: 1rem;
             margin-top: auto;
             padding-top: 1rem;
+            position: relative; /* Indispensable pour que les boutons passent au-dessus de la carte cliquable */
+            z-index: 2;
         }
 
         .btn-project {
@@ -1263,7 +1265,7 @@
             </a>
             <a href="#e4" class="nav-link">
                 <i class="fa-solid fa-graduation-cap nav-icon"></i>
-                <span>Épreuve E4</span>
+                <span>Épreuve E5</span>
             </a>
         </nav>
 
@@ -1339,16 +1341,10 @@
                 <div class="about-content fade-in">
                     <h3>Bonjour ! Je suis Aaron 👨‍💻</h3>
                     <p>
-                        Étudiant en BTS SIO option SLAM, je suis passionné par le développement web et la création
-                        d'interfaces modernes. Mon objectif est de créer des solutions digitales qui allient
-                        performance, esthétique et expérience utilisateur optimale.
+                        Étudiant en BTS SIO (option SLAM), je suis passionné par le développement web. Mon but est de concevoir des sites et des applications à la fois performants et agréables à utiliser. Curieux de nature, j'apprends beaucoup de nouvelles technos par moi-même pour continuer à m'améliorer et coder des projets vraiment utiles.
                     </p>
-                    <p>
-                        Autodidacte curieux, je me forme continuellement aux dernières technologies pour rester à
-                        la pointe de l'innovation. J'aime transformer des concepts complexes en applications
-                        intuitives et accessibles.
-                    </p>
-                   
+                    
+                    
 
                     <div class="stats-grid">
                         <div class="stat-card">
@@ -1386,16 +1382,16 @@
                         <h3>Frontend</h3>
                     </div>
                     <div class="skill-item">
-                        <span class="skill-name">Angular / Java</span>
+                        <span class="skill-name">Angular</span>
                     </div>
                     <div class="skill-item">
-                        <span class="skill-name">TypeScript</span>
+                        <span class="skill-name">JavaScript</span>
                     </div>
                     <div class="skill-item">
-                        <span class="skill-name">HTML / CSS / SCSS</span>
+                        <span class="skill-name">HTML</span>
                     </div>
                     <div class="skill-item">
-                        <span class="skill-name">Tailwind CSS</span>
+                        <span class="skill-name">CSS</span>
                     </div>
                 </div>
 
@@ -1407,13 +1403,13 @@
                         <h3>Backend</h3>
                     </div>
                     <div class="skill-item">
-                        <span class="skill-name">Node.js / Express</span>
+                        <span class="skill-name">Java</span>
                     </div>
                     <div class="skill-item">
-                        <span class="skill-name">PHP / Laravel</span>
+                        <span class="skill-name">PHP/Laravel</span>
                     </div>
                     <div class="skill-item">
-                        <span class="skill-name">MySQL / PostgreSQL</span>
+                        <span class="skill-name">MySQL/Mariadb</span>
                     </div>
                     <div class="skill-item">
                         <span class="skill-name">REST API</span>
@@ -1425,13 +1421,13 @@
                         <div class="skill-icon">
                             <i class="fa-solid fa-paintbrush"></i>
                         </div>
-                        <h3>Design & UX</h3>
+                        <h3>Maquettage / Prototypage</h3>
                     </div>
                     <div class="skill-item">
-                        <span class="skill-name">Figma / Adobe XD</span>
+                        <span class="skill-name">Figma</span>
                     </div>
                     <div class="skill-item">
-                        <span class="skill-name">UI/UX Design</span>
+                        <span class="skill-name">Framer</span>
                     </div>
                     <div class="skill-item">
                         <span class="skill-name">Responsive Design</span>
@@ -1446,19 +1442,19 @@
                         <div class="skill-icon">
                             <i class="fa-solid fa-tools"></i>
                         </div>
-                        <h3>Outils & DevOps</h3>
+                        <h3>Outils</h3>
                     </div>
                     <div class="skill-item">
                         <span class="skill-name">Git / GitHub</span>
                     </div>
                     <div class="skill-item">
-                        <span class="skill-name">Docker</span>
+                        <span class="skill-name">WampServer</span>
                     </div>
                     <div class="skill-item">
                         <span class="skill-name">VS Code</span>
                     </div>
                     <div class="skill-item">
-                        <span class="skill-name">CI/CD</span>
+                        <span class="skill-name">Windev</span>
                     </div>
                 </div>
             </div>
@@ -1519,7 +1515,6 @@
                         <div class="timeline-company">Option Informatique, Mathématique</div>
                         <p class="timeline-description">
                             Numérique et sciences informatiques et Mathématique
-                            
                         </p>
                     </div>
                 </div>
@@ -1536,12 +1531,13 @@
             </div>
 
             <div class="projects-grid">
+                
                 <div class="project-card fade-in" onclick="openModal('modal1')">
                     <div class="project-image">
                         <i class="fa-solid fa-shopping-cart"></i>
                     </div>
                     <div class="project-body">
-                        <h3 class="project-title">EasyStay — Plateforme de réservation immobilière (Clone Airbnb)</h3>
+                        <h3 class="project-title">EasyStay — Plateforme de réservation immobilière (Clone Airbnb) (En cours) </h3>
                         <p class="project-description">
                             Plateforme de réservation immobilière avec recherche cartographique et gestion des disponibilités.
                         </p>
@@ -1551,10 +1547,10 @@
                             <span class="tag">PostgreSQL</span>
                         </div>
                         <div class="project-actions">
-                            <a href="#" class="btn-project btn-github" onclick="event.stopPropagation()">
+                            <a href="LIEN_GITHUB_ICI" target="_blank" rel="noopener noreferrer" class="btn-project btn-github" onclick="event.stopPropagation()">
                                 <i class="fa-brands fa-github"></i> Code
                             </a>
-                            <a href="#" class="btn-project btn-demo" onclick="event.stopPropagation()">
+                            <a href="LIEN_DEMO_ICI" target="_blank" rel="noopener noreferrer" class="btn-project btn-demo" onclick="event.stopPropagation()">
                                 <i class="fa-solid fa-external-link-alt"></i> Demo
                             </a>
                         </div>
@@ -1566,20 +1562,20 @@
                         <i class="fa-solid fa-tasks"></i>
                     </div>
                     <div class="project-body">
-                        <h3 class="project-title">TaskMaster Pro</h3>
+                        <h3 class="project-title">Cap or Pro</h3>
                         <p class="project-description">
-                            Application de gestion de tâches collaborative avec notifications en temps réel.
+                            Site spécialiste de l'achat et de la vente de métaux précieux
                         </p>
                         <div class="project-tags">
-                            <span class="tag">Next.js</span>
-                            <span class="tag">TypeScript</span>
-                            <span class="tag">PostgreSQL</span>
+                            <span class="tag">Framer</span>
+                            <span class="tag">AWS S3</span>
+                            <span class="tag">Double Waf</span>
                         </div>
                         <div class="project-actions">
-                            <a href="#" class="btn-project btn-github" onclick="event.stopPropagation()">
+                            <a href="LIEN_GITHUB_ICI" target="_blank" rel="noopener noreferrer" class="btn-project btn-github" onclick="event.stopPropagation()">
                                 <i class="fa-brands fa-github"></i> Code
                             </a>
-                            <a href="#" class="btn-project btn-demo" onclick="event.stopPropagation()">
+                            <a href="https://capor.pro/" target="_blank" rel="noopener noreferrer" class="btn-project btn-demo" onclick="event.stopPropagation()">
                                 <i class="fa-solid fa-external-link-alt"></i> Demo
                             </a>
                         </div>
@@ -1591,20 +1587,20 @@
                         <i class="fa-solid fa-heartbeat"></i>
                     </div>
                     <div class="project-body">
-                        <h3 class="project-title">HealthTracker</h3>
+                        <h3 class="project-title">Cap or Numismatique</h3>
                         <p class="project-description">
-                            Application de suivi de santé avec tracking d'activité physique et nutrition.
+                            Site expert en numismatique, métaux précieux et bureau de change.
                         </p>
                         <div class="project-tags">
-                            <span class="tag">React Native</span>
-                            <span class="tag">Firebase</span>
-                            <span class="tag">Chart.js</span>
+                            <span class="tag">Framer</span>
+                            <span class="tag">AWS S3</span>
+                            <span class="tag">Api Financier (Yoda)</span>
                         </div>
                         <div class="project-actions">
-                            <a href="#" class="btn-project btn-github" onclick="event.stopPropagation()">
+                            <a href="LIEN_GITHUB_ICI" target="_blank" rel="noopener noreferrer" class="btn-project btn-github" onclick="event.stopPropagation()">
                                 <i class="fa-brands fa-github"></i> Code
                             </a>
-                            <a href="#" class="btn-project btn-demo" onclick="event.stopPropagation()">
+                            <a href="https://intelligent-month-459295.framer.app/" target="_blank" rel="noopener noreferrer" class="btn-project btn-demo" onclick="event.stopPropagation()">
                                 <i class="fa-solid fa-external-link-alt"></i> Demo
                             </a>
                         </div>
@@ -1621,15 +1617,13 @@
                             Plateforme de streaming vidéo avec catalogue et système de recommandation.
                         </p>
                         <div class="project-tags">
-                            <span class="tag">React</span>
-                            <span class="tag">Express</span>
-                            <span class="tag">AWS S3</span>
+                            <span class="tag">Framer</span>
                         </div>
                         <div class="project-actions">
-                            <a href="#" class="btn-project btn-github" onclick="event.stopPropagation()">
+                            <a href="LIEN_GITHUB_ICI" target="_blank" rel="noopener noreferrer" class="btn-project btn-github" onclick="event.stopPropagation()">
                                 <i class="fa-brands fa-github"></i> Code
                             </a>
-                            <a href="#" class="btn-project btn-demo" onclick="event.stopPropagation()">
+                            <a href="https://endless-actions-246707.framer.app/" target="_blank" rel="noopener noreferrer" class="btn-project btn-demo" onclick="event.stopPropagation()">
                                 <i class="fa-solid fa-external-link-alt"></i> Demo
                             </a>
                         </div>
@@ -1641,20 +1635,20 @@
                         <i class="fa-solid fa-comments"></i>
                     </div>
                     <div class="project-body">
-                        <h3 class="project-title">ChatConnect</h3>
+                        <h3 class="project-title">Esport Score Vault</h3>
                         <p class="project-description">
-                            Messagerie instantanée avec chat en temps réel et appels vidéo.
+                            Plateforme de suivi de tournois e-sport.
                         </p>
                         <div class="project-tags">
-                            <span class="tag">Vue.js</span>
-                            <span class="tag">Socket.io</span>
-                            <span class="tag">WebRTC</span>
+                            <span class="tag">PHP</span>
+                            <span class="tag">HTML/CSS</span>
+                            <span class="tag">MariaDB</span>
                         </div>
                         <div class="project-actions">
-                            <a href="#" class="btn-project btn-github" onclick="event.stopPropagation()">
+                            <a href="LIEN_GITHUB_ICI" target="_blank" rel="noopener noreferrer" class="btn-project btn-github" onclick="event.stopPropagation()">
                                 <i class="fa-brands fa-github"></i> Code
                             </a>
-                            <a href="#" class="btn-project btn-demo" onclick="event.stopPropagation()">
+                            <a href="https://drive.google.com/file/d/13cttEApwJT_5n6_Iz2LtnDRSArKMFlSw/view?usp=sharing" target="_blank" rel="noopener noreferrer" class="btn-project btn-demo" onclick="event.stopPropagation()">
                                 <i class="fa-solid fa-external-link-alt"></i> Demo
                             </a>
                         </div>
@@ -1666,111 +1660,72 @@
                         <i class="fa-solid fa-chart-line"></i>
                     </div>
                     <div class="project-body">
-                        <h3 class="project-title">Analytics Dashboard</h3>
+                        <h3 class="project-title">Traducteur</h3>
                         <p class="project-description">
-                            Dashboard analytique temps réel avec graphiques interactifs.
+                            Application mobile de traduction
                         </p>
                         <div class="project-tags">
-                            <span class="tag">Next.js</span>
-                            <span class="tag">D3.js</span>
-                            <span class="tag">GraphQL</span>
+                            <span class="tag">WinDev Mobile</span>
                         </div>
                         <div class="project-actions">
-                            <a href="#" class="btn-project btn-github" onclick="event.stopPropagation()">
+                            <a href="LIEN_GITHUB_ICI" target="_blank" rel="noopener noreferrer" class="btn-project btn-github" onclick="event.stopPropagation()">
                                 <i class="fa-brands fa-github"></i> Code
                             </a>
-                            <a href="#" class="btn-project btn-demo" onclick="event.stopPropagation()">
+                            <a href="https://drive.google.com/file/d/18VmBxLMythXI5iZy_EiF1Nx3IltuLiaO/view?usp=sharing" target="_blank" rel="noopener noreferrer" class="btn-project btn-demo" onclick="event.stopPropagation()">
                                 <i class="fa-solid fa-external-link-alt"></i> Demo
                             </a>
                         </div>
                     </div>
                 </div>
+
             </div>
         </section>
 
         <section id="veilles">
             <div class="section-header fade-in">
                 <span class="section-tag">🔍 Recherche</span>
-                <h2 class="section-title">Veilles Technologiques</h2>
+                <h2 class="section-title">Veilles Informationnelle</h2>
                 <p class="section-description">
-                    Veille constante sur les innovations tech
+                    
                 </p>
             </div>
 
             <div class="veilles-grid">
                 <div class="veille-card fade-in">
                     <div class="veille-icon">
-                        <i class="fa-brands fa-react"></i>
-                    </div>
-                    <h3>Angular & SpringBoot</h3>
-                    <p>
-			Veille active sur Angular 17, Spring Boot 3 (Java 21) et l'évolution de l'écosystème Java/Angular.                    </p>
-                    <a href="#" class="veille-link">
-                        Voir mes notes <i class="fa-solid fa-arrow-right"></i>
-                    </a>
-                </div>
-
-                <div class="veille-card fade-in">
-                    <div class="veille-icon">
-                        <i class="fa-solid fa-robot"></i>
-                    </div>
-                    <h3>Intelligence Artificielle</h3>
-                    <p>
-                        Exploration des IA génératives et leur intégration dans le développement web.
-                    </p>
-                    <a href="#" class="veille-link">
-                        Voir mes notes <i class="fa-solid fa-arrow-right"></i>
-                    </a>
-                </div>
-
-                <div class="veille-card fade-in">
-                    <div class="veille-icon">
-                        <i class="fa-solid fa-mobile-screen-button"></i>
-                    </div>
-                    <h3>Progressive Web Apps</h3>
-                    <p>
-                        Suivi des évolutions PWA, Web APIs modernes et stratégies offline-first.
-                    </p>
-                    <a href="#" class="veille-link">
-                        Voir mes notes <i class="fa-solid fa-arrow-right"></i>
-                    </a>
-                </div>
-
-                <div class="veille-card fade-in">
-                    <div class="veille-icon">
                         <i class="fa-solid fa-shield-halved"></i>
                     </div>
-                    <h3>Cybersécurité Web</h3>
+                    <h3>Attaque Cybersécurité Web</h3>
                     <p>
-                        Veille sur les vulnérabilités OWASP et meilleures pratiques de sécurisation.
+                        Activité de collecte d’informations stratégiques pour anticiper les évolutions et innovations
                     </p>
-                    <a href="#" class="veille-link">
+                    <a href="https://canva.link/1a1azhx0sox45jj" target="_blank" rel="noopener noreferrer" class="veille-link">
                         Voir mes notes <i class="fa-solid fa-arrow-right"></i>
                     </a>
                 </div>
 
                 <div class="veille-card fade-in">
                     <div class="veille-icon">
-                        <i class="fa-solid fa-gauge-high"></i>
+                        <i class="fa-solid fa-filter"></i>
                     </div>
-                    <h3>Performance Web</h3>
+                    <h3>Curation</h3>
                     <p>
-                        Optimisation Core Web Vitals, lazy loading et techniques de mise en cache.
+                        Sélection, tri et organisation des sources d'information pour ne retenir que l'essentiel.
                     </p>
-                    <a href="#" class="veille-link">
+                    <a href="https://drive.google.com/file/d/1QwH11nKoyKRxI6WHRw_1hHB10uxO_1pn/view?usp=sharing" class="veille-link">
                         Voir mes notes <i class="fa-solid fa-arrow-right"></i>
                     </a>
                 </div>
 
                 <div class="veille-card fade-in">
                     <div class="veille-icon">
-                        <i class="fa-solid fa-cloud"></i>
+                        <i class="fa-solid fa-bullseye"></i>
                     </div>
-                    <h3>Cloud & DevOps</h3>
+                    <h3>Pertinence</h3>
                     <p>
-                        Évolutions cloud (AWS, Vercel), CI/CD modernes et orchestration.
+                        Analyse et évaluation de la fiabilité des informations récoltées pour garantir leur qualité.
                     </p>
-                    <a href="#" class="veille-link">
+                    <a href="https://drive.google.com/file/d/1nNf0sb6tLqgkn0JOptqL2CdkqVTooUvP/view?usp=sharing" class="veille-link">
                         Voir mes notes <i class="fa-solid fa-arrow-right"></i>
                     </a>
                 </div>
@@ -1813,7 +1768,7 @@
     </div>
 </section>
 
-        <section id="e4">
+<section id="e4">
             <div class="section-header fade-in">
                 <span class="section-tag">📁 Documentation</span>
                 <h2 class="section-title">Épreuve E5 - BTS SIO</h2>
@@ -1824,62 +1779,26 @@
 
             <div class="e4-grid">
                 <div class="e4-card fade-in">
-                    <div class="e4-icon">📊</div>
-                    <h3>Tableau de Synthèse</h3>
+                    <div class="e4-icon">📄</div>
+                    <h3>Curriculum Vitae</h3>
                     <p>
-                        Récapitulatif complet de mes réalisations professionnelles avec contextes et solutions.
+                        Mon parcours de formation, mes expériences professionnelles et mon profil technique.
                     </p>
-                    <a href="#" class="download-btn">
-                        <i class="fa-solid fa-download"></i>
-                        Télécharger PDF
-                    </a>
-                </div>
-
-                <div class="e4-card fade-in">
-                    <div class="e4-icon">📝</div>
-                    <h3>Fiches Descriptives</h3>
-                    <p>
-                        Documentation détaillée de 2 réalisations professionnelles avec analyses techniques.
-                    </p>
-                    <a href="#" class="download-btn">
-                        <i class="fa-solid fa-download"></i>
-                        Télécharger PDF
-                    </a>
-                </div>
-
-                <div class="e4-card fade-in">
-                    <div class="e4-icon">💻</div>
-                    <h3>Productions Techniques</h3>
-                    <p>
-                        Code source, maquettes et documentation des projets présentés.
-                    </p>
-                    <a href="#" class="download-btn">
-                        <i class="fa-solid fa-download"></i>
-                        Accéder GitHub
-                    </a>
-                </div>
-
-                <div class="e4-card fade-in">
-                    <div class="e4-icon">📈</div>
-                    <h3>Veille Technologique</h3>
-                    <p>
-                        Synthèse de ma veille avec analyses d'articles et tests de technologies.
-                    </p>
-                    <a href="#" class="download-btn">
-                        <i class="fa-solid fa-download"></i>
-                        Voir la veille
+                    <a href="https://drive.google.com/file/d/1gBxqPelXEQhO_CBkhb9e6WoT_vA96bCF/view?usp=sharing" target="_blank" class="download-btn">
+                        <i class="fa-solid fa-eye"></i>
+                        Voir
                     </a>
                 </div>
 
                 <div class="e4-card fade-in">
                     <div class="e4-icon">🎯</div>
-                    <h3>Compétences Acquises</h3>
+                    <h3>Grille de Compétences</h3>
                     <p>
-                        Cartographie des compétences développées durant la formation.
+                        Cartographie et validation de mes compétences selon le référentiel officiel du BTS SIO.
                     </p>
-                    <a href="#" class="download-btn">
-                        <i class="fa-solid fa-download"></i>
-                        Télécharger PDF
+                    <a href="https://drive.google.com/file/d/17a47waSh_71yhYURqKpud9z--VEU19gW/view?usp=sharing" target="_blank" class="download-btn">
+                        <i class="fa-solid fa-eye"></i>
+                        Voir
                     </a>
                 </div>
 
@@ -1887,56 +1806,40 @@
                     <div class="e4-icon">🏆</div>
                     <h3>Certifications</h3>
                     <p>
-                        Certificats et attestations de formations complémentaires.
+                        Certificats et attestations de formations complémentaires obtenues.
                     </p>
-                    <a href="#" class="download-btn">
-                        <i class="fa-solid fa-download"></i>
-                        Voir certificats
+                    <a href="https://drive.google.com/file/d/1jXeurx4vZKCDKxg4uPI5r4yQUxbEmmmn/view?usp=sharing" target="_blank" class="download-btn">
+                        <i class="fa-solid fa-eye"></i>
+                        Voir
                     </a>
                 </div>
             </div>
         </section>
-    </div>
-
-    <div id="modal1" class="modal">
+    </div> <div id="modal1" class="modal">
         <div class="modal-dialog">
             <div class="modal-header">
                 <span class="modal-close" onclick="closeModal('modal1')">&times;</span>
-                <h2 class="modal-title">TechStore - E-Commerce</h2>
+                <h2 class="modal-title">EasyStay</h2>
                 <div class="project-tags">
-                    <span class="tag">React</span>
-                    <span class="tag">Node.js</span>
-                    <span class="tag">MongoDB</span>
-                    <span class="tag">Stripe</span>
+                    <span class="tag">Angular</span>
+                    <span class="tag">SpringBoot</span>
+                    <span class="tag">PostgreSQL</span>
                 </div>
             </div>
             <div class="modal-body">
                 <div class="modal-section">
                     <h4>📋 Description</h4>
                     <p>
-                        Plateforme de réservation immobilière (clone Airbnb) moderne et évolutive. Elle repose sur une architecture Full Stack robuste combinant Spring Boot 3 pour le backend et d'Angular 17 pour une expérience utilisateur fluide.
+                        Plateforme de réservation immobilière (Clone Airbnb) avec recherche cartographique et gestion des disponibilités.
                     </p>
                 </div>
                 <div class="modal-section">
                     <h4>✨ Fonctionnalités</h4>
                     <ul>
-                        <li>Création complète de propriétés par les hôtes (photos, descriptions, tarifs).</li>
-                        <li>Filtres multicritères par destination, dates de séjour et nombre de voyageurs.</li>
-                        <li>Visualisation des logements sur une carte dynamique via l'API Leaflet.</li>
-                        <li>Tunnel de réservation complet avec gestion des disponibilités en temps réel.</li>
-                        <li>Intégration d'Auth0 pour une gestion robuste des utilisateurs et des rôles (Hôte/Voyageur).</li>
-                        <li>Dashboards dédiés pour le suivi des réservations et la gestion des biens en location.</li>
-                        <li>Design moderne et adaptatif optimisé pour tous les écrans.</li>
-                    </ul>
-                </div>
-                <div class="modal-section">
-                    <h4>🛠️ Technologies</h4>
-                    <ul>
-                        <li><strong>Frontend:</strong> Angular 17 (Standalone Components, Signals), PrimeNG, PrimeFlex, RxJS.</li>
-                        <li><strong>Backend:</strong> Java 21, Spring Boot 3, Spring Security, Spring Data JPA.</li>
-                        <li><strong>Base de données:</strong> PostgreSQL, Liquibase (versioning de base de données).</li>
-                        <li><strong>Paiement:</strong> Auth0 (OAuth 2.0 / OIDC), JWT.</li>
-                        <li><strong>Styling:</strong> Leaflet API, MapStruct, Maven, FontAwesome.</li>
+                        <li>Recherche de biens immobiliers par localisation</li>
+                        <li>Système de réservation avec gestion des disponibilités</li>
+                        <li>Interface de gestion pour les hôtes</li>
+                        <li>Base de données relationnelle sécurisée</li>
                     </ul>
                 </div>
             </div>
@@ -1947,29 +1850,26 @@
         <div class="modal-dialog">
             <div class="modal-header">
                 <span class="modal-close" onclick="closeModal('modal2')">&times;</span>
-                <h2 class="modal-title">TaskMaster Pro</h2>
+                <h2 class="modal-title">Cap or Pro</h2>
                 <div class="project-tags">
-                    <span class="tag">Next.js</span>
-                    <span class="tag">TypeScript</span>
-                    <span class="tag">PostgreSQL</span>
+                    <span class="tag">Framer</span>
+                    <span class="tag">AWS S3</span>
+                    <span class="tag">Double Waf</span>
                 </div>
             </div>
             <div class="modal-body">
                 <div class="modal-section">
                     <h4>📋 Description</h4>
                     <p>
-                        Application de gestion de projets collaborative permettant aux équipes de travailler efficacement. Utilise Next.js pour un rendu optimal et TypeScript pour la fiabilité.
+                        Site spécialiste de l'achat et de la vente de métaux précieux.
                     </p>
                 </div>
                 <div class="modal-section">
                     <h4>✨ Fonctionnalités</h4>
                     <ul>
-                        <li>Tableaux Kanban avec drag & drop fluide</li>
-                        <li>Notifications temps réel via WebSockets</li>
-                        <li>Système de collaboration avec commentaires</li>
-                        <li>Intégration calendrier et rappels automatiques</li>
-                        <li>Statistiques et rapports d'avancement</li>
-                        <li>Mode hors-ligne avec synchronisation</li>
+                        <li>Interface vitrine moderne développée avec Framer</li>
+                        <li>Stockage sécurisé des documents légaux (Livre de police, RGPD) sur AWS S3</li>
+                        <li>Sécurité renforcée avec un Double WAF (Cloudflare, Wordfence) contre les bots</li>
                     </ul>
                 </div>
             </div>
@@ -1980,28 +1880,26 @@
         <div class="modal-dialog">
             <div class="modal-header">
                 <span class="modal-close" onclick="closeModal('modal3')">&times;</span>
-                <h2 class="modal-title">HealthTracker</h2>
+                <h2 class="modal-title">Cap or Numismatique</h2>
                 <div class="project-tags">
-                    <span class="tag">React Native</span>
-                    <span class="tag">Firebase</span>
-                    <span class="tag">Chart.js</span>
+                    <span class="tag">Framer</span>
+                    <span class="tag">AWS S3</span>
+                    <span class="tag">Api Financier (Yoda)</span>
                 </div>
             </div>
             <div class="modal-body">
                 <div class="modal-section">
                     <h4>📋 Description</h4>
                     <p>
-                        Application mobile de suivi de santé permettant de monitorer l'activité physique, nutrition et sommeil avec visualisations détaillées.
+                        Site expert en numismatique, métaux précieux et bureau de change.
                     </p>
                 </div>
                 <div class="modal-section">
                     <h4>✨ Fonctionnalités</h4>
                     <ul>
-                        <li>Tracking activité physique (pas, distance, calories)</li>
-                        <li>Journal alimentaire avec calcul nutritionnel</li>
-                        <li>Suivi du sommeil et analyse des cycles</li>
-                        <li>Graphiques et statistiques détaillées</li>
-                        <li>Intégration Apple Health et Google Fit</li>
+                        <li>Intégration d'un connecteur API financier (Yoda Forex)</li>
+                        <li>Système de cache anti-surcharge pour optimiser les appels API</li>
+                        <li>Interface utilisateur fluide et responsive</li>
                     </ul>
                 </div>
             </div>
@@ -2014,27 +1912,15 @@
                 <span class="modal-close" onclick="closeModal('modal4')">&times;</span>
                 <h2 class="modal-title">StreamFlix</h2>
                 <div class="project-tags">
-                    <span class="tag">React</span>
-                    <span class="tag">Express</span>
-                    <span class="tag">AWS S3</span>
+                    <span class="tag">Framer</span>
                 </div>
             </div>
             <div class="modal-body">
                 <div class="modal-section">
                     <h4>📋 Description</h4>
                     <p>
-                        Plateforme de streaming vidéo inspirée de Netflix avec système de recommandation personnalisé et lecteur vidéo avancé.
+                        Plateforme de streaming vidéo avec catalogue et système de recommandation.
                     </p>
-                </div>
-                <div class="modal-section">
-                    <h4>✨ Fonctionnalités</h4>
-                    <ul>
-                        <li>Catalogue films/séries avec recherche avancée</li>
-                        <li>Lecteur vidéo HTML5 personnalisé</li>
-                        <li>Recommandations basées sur l'historique</li>
-                        <li>Profils utilisateurs multiples</li>
-                        <li>Streaming adaptatif selon la bande passante</li>
-                    </ul>
                 </div>
             </div>
         </div>
@@ -2044,28 +1930,26 @@
         <div class="modal-dialog">
             <div class="modal-header">
                 <span class="modal-close" onclick="closeModal('modal5')">&times;</span>
-                <h2 class="modal-title">ChatConnect</h2>
+                <h2 class="modal-title">Esport Score Vault</h2>
                 <div class="project-tags">
-                    <span class="tag">Vue.js</span>
-                    <span class="tag">Socket.io</span>
-                    <span class="tag">WebRTC</span>
+                    <span class="tag">PHP</span>
+                    <span class="tag">HTML/CSS</span>
+                    <span class="tag">MariaDB</span>
                 </div>
             </div>
             <div class="modal-body">
                 <div class="modal-section">
                     <h4>📋 Description</h4>
                     <p>
-                        Application de messagerie instantanée avec chat temps réel, appels audio/vidéo et partage de fichiers.
+                        Plateforme de suivi de tournois e-sport.
                     </p>
                 </div>
                 <div class="modal-section">
                     <h4>✨ Fonctionnalités</h4>
                     <ul>
-                        <li>Messagerie instantanée temps réel</li>
-                        <li>Appels audio et vidéo via WebRTC</li>
-                        <li>Partage de fichiers multimédias</li>
-                        <li>Groupes de discussion</li>
-                        <li>Messages éphémères et chiffrement</li>
+                        <li>Affichage des scores en temps réel</li>
+                        <li>Gestion de base de données relationnelle des équipes et joueurs</li>
+                        <li>Interface web dynamique en PHP natif</li>
                     </ul>
                 </div>
             </div>
@@ -2076,29 +1960,17 @@
         <div class="modal-dialog">
             <div class="modal-header">
                 <span class="modal-close" onclick="closeModal('modal6')">&times;</span>
-                <h2 class="modal-title">Analytics Dashboard</h2>
+                <h2 class="modal-title">Traducteur</h2>
                 <div class="project-tags">
-                    <span class="tag">Next.js</span>
-                    <span class="tag">D3.js</span>
-                    <span class="tag">GraphQL</span>
+                    <span class="tag">WinDev Mobile</span>
                 </div>
             </div>
             <div class="modal-body">
                 <div class="modal-section">
                     <h4>📋 Description</h4>
                     <p>
-                        Dashboard analytique professionnel pour visualisation de données business en temps réel avec graphiques interactifs.
+                        Application mobile de traduction.
                     </p>
-                </div>
-                <div class="modal-section">
-                    <h4>✨ Fonctionnalités</h4>
-                    <ul>
-                        <li>Visualisation données temps réel</li>
-                        <li>Graphiques interactifs multiples</li>
-                        <li>Tableaux avec tri et filtrage</li>
-                        <li>Rapports personnalisés avec exports PDF/Excel</li>
-                        <li>Système d'alertes sur seuils</li>
-                    </ul>
                 </div>
             </div>
         </div>
@@ -2158,7 +2030,7 @@
             }
         });
 
-        // Form submit
+        // Form submit (si tu remets un formulaire plus tard)
         function handleSubmit(e) {
             e.preventDefault();
             alert('Merci pour votre message ! Je vous répondrai rapidement. 🚀');
@@ -2168,7 +2040,5 @@
 
         console.log('%c🚀 Portfolio optimisé chargé!', 'color: #6366f1; font-size: 18px; font-weight: bold;');
     </script>
-
-
 </body>
 </html>
